@@ -1,0 +1,86 @@
+<div class="main-modal">
+    <div class="modal fade" id="my_modal" tabindex="-1" role="dialog" aria-labelledby="my_modalLabel">
+    <div class="modal-dialog" role="dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Update Product</h4>
+            </div>
+            <div class="modal-body">
+                <form method="POST" class="post-form">  
+                    {% csrf_token %}  
+                    <div class="container">  
+                    <br>  
+                    <div class="form-group row">  
+                    <label class="col-sm-1 col-form-label"></label>  
+                    <div class="col-sm-4">  
+                    <h3>Product Details</h3>  
+                    </div>  
+                    </div>  
+                      <div class="form-group row">  
+                      <label class="col-sm-2 col-form-label">Product Name:</label>  
+                      <div class="col-sm-4">  
+                          <input type="text" class="form-control" name="name" id="_name" value="{{product.name}}" required>
+                      </div>  
+                    </div>  
+                    <div class="form-group row">  
+                      <label class="col-sm-2 col-form-label">Product price:</label>  
+                      <div class="col-sm-4">   
+                        <input type="number" class="form-control"  name="price" value="{{product.price}}"  id="_price" min="0" required>
+                      </div>  
+                    </div>  
+                      <div class="form-group row">  
+                      <label class="col-sm-2 col-form-label">Product Code:</label>  
+                      <div class="col-sm-4">  
+                        <input type="text" class="form-control" name="product_code" value="{{product.product_code}}" id="_product_code" required>
+                      </div>  
+                    </div>  
+                      <div class="form-group row">  
+                      <label class="col-sm-2 col-form-label">Product manufacture date:</label>  
+                      <div class="col-sm-4">  
+                        <input type="datetime-local" class="form-control" id="_manufacture_date" value="{{product.manufacture_date}}" name="manufacture_date" required>
+                      </div>  
+                      
+                    </div>  
+                    <div class="form-group row">  
+                      <label class="col-sm-2 col-form-label">Product expiry date:</label>  
+                      <div class="col-sm-4">  
+                        <input type="datetime-local" class="form-control" id="_expiry_date" value="{{product.expiry_date}}" name="expiry_date" required>
+                    </div> 
+                   
+                       </div> 
+                
+                       <div class="form-group row">  
+                        <label class="col-sm-2 col-form-label">Category:</label>  
+                        <div class="col-sm-4">  
+                          <select id="category" name="category" class="form-control">
+                            {% for category in categories %}
+                                <option value="{{ category.id }}">{{ category }}</option>
+                            {% endfor %}
+                            </select>
+                         </div> 
+                     
+                         </div> 
+                
+                         <div class="form-group row">  
+                          <label class="col-sm-2 col-form-label">Product owner:</label>  
+                          <div class="col-sm-4">  
+                            <select id="created_by" name="created_by" class="form-control">
+                              {% for user in users %}
+                                  <option value="{{ user.id }}">{{ user }}</option>
+                              {% endfor %}
+                              </select>
+                           </div> 
+                       
+                           </div> 
+                       <div class="form-group row">  
+                        <label class="col-sm-2 col-form-label"></label>  
+                        <div class="col-sm-4">  
+                          <button type="submit" onclick="edit_f()"  class="btn btn-primary">Update</button> 
+                    </div> 
+                     </div>      
+                </form>  
+            </div>
+        </div>
+    </div>
+</div>
